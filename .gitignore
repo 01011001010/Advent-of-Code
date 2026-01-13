@@ -1,2 +1,3 @@
 .secrets.baseline
 sessionCookie.txt
+__pycache__
