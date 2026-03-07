@@ -1,3 +1,4 @@
 .secrets.baseline
 sessionCookie.txt
 __pycache__
+.ruff_cache

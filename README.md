@@ -9,18 +9,26 @@
 
 This repository contains my solutions to the annual [Advent of Code][AoC] puzzles.
 
-At the moment I have 383 (or more, if I forget to update it here) stars from the events since 2015. I will continue to populate this repository when I find bits of time to clean the solutions to my current standards.
+At the moment I have 383 (or more, if I forget to update it here) stars from the events since 2015.
+I will continue to populate this repository when I find bits of time to clean the solutions to my current standards.
 
-Hopefully, my solutions will help in debugging or learning. The licence allows copying the solutions as is. Doing so, just to get the puzzle answer seems, in my humble opinion, pointless or even counterproductive. So please, if you do take my whole solutions, try to look into the code and see how it works.
+Hopefully, my solutions will help in debugging or learning.
+The licence allows copying the solutions as is.
+Doing so, just to get the puzzle answer seems, in my humble opinion, pointless or even counterproductive.
+So please, if you do take my whole solutions, try to look into the code and see how it works.
 
-Of note is also my custom [utility][util-file], that loads the puzzle inputs directly from the web. The file is added as a symlink to each year's subdirectory to allow smooth imports when run in various IDEs/terminals. See the [Getting Started section](#getting-started) on how to set it up to access your own inputs. Please be mindful to not spam the requests to the AoC server. The utility uses memoisation, so calling the `getInput` function multiple times in one run is ok, but rerunning the code many times in a short time window is less so.
+Of note is also my custom [utility][util-file], that loads the puzzle inputs directly from the web.
+The file is added as a symlink to each year's subdirectory to allow smooth imports when run in various IDEs/terminals.
+See the [Getting Started section](#getting-started) on how to set it up to access your own inputs. Please be mindful to not spam the requests to the AoC server.
+The utility uses memoisation, so calling the `getInput` function multiple times in one run is ok, but rerunning the code many times in a short time window is less so.
 
 ## Getting Started
 
 #### 1. Find your session cookie
 
 Log in at the [Advent of Code website][AoC-login], if you are not already logged in, and find your session cookie.
-You will likely find it in the inspect mode of your browser (`Inspect > Application > Storage > Cookies`), but it may vary between versions and browsers. A quick [web search][google-cookie] will surely help you.
+You will likely find it in the inspect mode of your browser (`Inspect > Application > Storage > Cookies`), but it may vary between versions and browsers.
+A quick [web search][google-cookie] will surely help you.
 
 
 #### 2. Create `sessionCookie.txt`
@@ -32,6 +40,8 @@ cp sessionCookie.example.txt sessionCookie.txt
 ```
 
 and replace the contents with your session cookie
+
+##### NOTE: You will need to update this every time you log in after a log out.
 
 #### 3. Install dependencies
 
