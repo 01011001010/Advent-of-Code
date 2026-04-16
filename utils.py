@@ -26,13 +26,57 @@ def getInput(day: int, year: int = date.today().year) -> str:
     return response.text
 
 
-def _part(i: int, answer: int | str):
+def _part(i: int, answer: int | str) -> None:
     print(f'Part {i}: {answer}')
 
 
-def part1(answer: int | str = ''):
+def part1(answer: int | str = '') -> None:
     _part(1, answer)
 
 
-def part2(answer: int | str = ''):
+def part2(answer: int | str = '') -> None:
     _part(2, answer)
+
+
+def bothParts(answer1: int | str = '', answer2: int | str = '') -> None:
+    _part(1, answer1)
+    _part(2, answer2)
+
+
+class RememberExtreme:
+    def __init__(self) -> None:
+        self.value = None
+        self.defaultStr = None
+
+    def __str__(self) -> str:
+        if self.value is None:
+            if self.defaultStr is None:
+                raise NotImplementedError("Do not use RememberExtreme class directly")
+            return self.defaultStr
+        return str(self.value)
+
+    def getValue(self) -> int:
+        if self.value is None:
+            raise ValueError("No values to choose from")
+        return self.value
+
+    def newValueToConsider(self, value: int) -> None:
+        raise NotImplementedError("Do not use RememberExtreme class directly")
+
+
+class RememberMax(RememberExtreme):
+    def __init__(self) -> None:
+        self.defaultStr = "Minus infinity"
+
+    def newValueToConsider(self, value: int) -> None:
+        if self.value is None or self.value < value:
+            self.value = value
+
+
+class RememberMin(RememberExtreme):
+    def __init__(self) -> None:
+        self.defaultStr = "Infinity"
+
+    def newValueToConsider(self, value: int) -> None:
+        if self.value is None or self.value > value:
+            self.value = value
