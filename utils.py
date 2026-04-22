@@ -66,6 +66,7 @@ class RememberExtreme:
 
 class RememberMax(RememberExtreme):
     def __init__(self) -> None:
+        self.value = None
         self.defaultStr = "Minus infinity"
 
     def newValueToConsider(self, value: int) -> None:
@@ -75,6 +76,7 @@ class RememberMax(RememberExtreme):
 
 class RememberMin(RememberExtreme):
     def __init__(self) -> None:
+        self.value = None
         self.defaultStr = "Infinity"
 
     def newValueToConsider(self, value: int) -> None:
