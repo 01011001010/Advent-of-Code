@@ -2,6 +2,7 @@ import requests as requests
 from pathlib import Path
 from datetime import date
 from collections.abc import Callable
+from typing import Any
 
 
 _loadedInput = {}
@@ -60,7 +61,7 @@ class RememberExtreme:
             raise ValueError("No values to choose from")
         return self.value
 
-    def newValueToConsider(self, value: int) -> None:
+    def newValueToConsider(self, value: Any) -> None:
         raise NotImplementedError("Do not use RememberExtreme class directly")
 
 
