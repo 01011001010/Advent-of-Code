@@ -7,11 +7,11 @@ class Program:
     def __init__(self, name: str) -> None:
         self.weight = None
         self.above = None
-        self.bellow = None
+        self.below = None
         self.name = name
 
-    def setBellow(self, other: "Program") -> None:
-        self.bellow = other
+    def setBelow(self, other: "Program") -> None:
+        self.below = other
 
     def setWeight(self, weight: int) -> None:
         self.weight = weight
@@ -20,9 +20,9 @@ class Program:
         self.above = above
 
     def getBottom(self) -> "Program":
-        if self.bellow is None:
+        if self.below is None:
             return self
-        return self.bellow.getBottom()
+        return self.below.getBottom()
 
     def balance(self) -> np.ndarray:
         # Investigate weights of sub-towers.
@@ -66,7 +66,7 @@ def constructTowerAndGetBottom() -> Program:
 
         for programAbove in above:
             programs[programAbove] = programs.get(programAbove, Program(programAbove))
-            programs[programAbove].setBellow(programs[name])
+            programs[programAbove].setBelow(programs[name])
 
         programs[name].setAbove(tuple(map(lambda name: programs[name], above)))
         programs[name].setWeight(int(weight))
