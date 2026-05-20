@@ -1,15 +1,17 @@
 from utils import getInput, part1, part2
 import numpy as np
+from re import fullmatch
 
 
 class Processor:
-    def __init__(self) -> None:
+    def __init__(self, data: str = getInput(10, 2017).strip()) -> None:
         self.skipSize = 0
         self.currentPosition = 0
         self.ringSize = 256
         self.state = np.arange(self.ringSize)
-        data = getInput(10, 2017).strip()
-        self.lengths = list(map(int, data.split(',')))
+        self.lengths = (list(map(int, data.split(',')))
+                        if fullmatch(r"[0-9,]+", data)
+                        else None)
         self.lengthsByte = list(map(ord, data)) + [17, 31, 73, 47, 23]
 
     def reset(self) -> None:
@@ -18,7 +20,7 @@ class Processor:
         self.ringSize = 256
         self.state = np.arange(self.ringSize)
 
-    def processOneLength(self, length) -> None:
+    def processOneLength(self, length: int) -> None:
         # arr[mask] = arr[mask][::-1] does not preserve the order at the edge, so:
         # The circularity is simulated with double array length
         # Explanation with example:
@@ -56,6 +58,8 @@ class Processor:
         self.skipSize %= self.ringSize
 
     def process(self) -> int:
+        if self.lengths is None:
+            raise ValueError("Byte-form data needs to be processed with .giveHash()")
         for length in self.lengths:
             self.processOneLength(length)
         return self.state[0] * self.state[1]
@@ -79,4 +83,6 @@ def solveDay() -> None:
     part2(processor.giveHash())
 
 
-solveDay()
+if __name__ == '__main__':
+    # The Processor is used in the day 14 code (thus we are isolating this from imports)
+    solveDay()
